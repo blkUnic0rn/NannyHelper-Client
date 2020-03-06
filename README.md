@@ -8,7 +8,7 @@ Deployed Site:
 
 Deployed Heroku:
 
-Deployed API Repo: ![deployed api repo link](https://github.com/Kayla-SA-W/NannyHelper-Api)
+Deployed API Repo: https://github.com/Kayla-SA-W/NannyHelper-Api
 
 ## Planning Story
 
