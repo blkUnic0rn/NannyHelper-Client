@@ -5,7 +5,9 @@ This app was designed for child caregivers to share their experiences in order t
 ## Important Links
 
 Deployed Site:
+
 Deployed Heroku:
+
 Deployed API Repo: ![deployed api repo link](https://github.com/Kayla-SA-W/NannyHelper-Api)
 
 ## Planning Story
@@ -14,26 +16,34 @@ I started wanting to find a way to help some of my friends in the childcare circ
 
 ## User Stories
 
-*As a user, I would like to search for a family by their last name
-*As a user, I would like to search for a family by their city and state
-*As a user, I would like to be able to see the reviews of a given family
-*As a user, I would like to sign in and sign up
-*As a signed in user, I would like to create a new family
-*As a signed in user, I would like to create a new review
-*As a signed in user, I would like to update my reviews
-*As a signed in user, I would like to delete my reviews
-*As a signed in user, I would like to see all of my reviews
+* As a user, I would like to search for a family by their last name
+
+* As a user, I would like to search for a family by their city and state
+
+* As a user, I would like to be able to see the reviews of a given family
+
+* As a user, I would like to sign in and sign up
+
+* As a signed in user, I would like to create a new family
+
+* As a signed in user, I would like to create a new review
+
+* As a signed in user, I would like to update my reviews
+
+* As a signed in user, I would like to delete my reviews
+
+* As a signed in user, I would like to see all of my reviews
 
 
 ## Technologies Used
 
-*JavaScript
-*React
-*React Bootstrap
-*Axios
-*JSX
-*Bootstrap
-*SCSS
+* JavaScript
+* React
+* React Bootstrap
+* Axios
+* JSX
+* Bootstrap
+* SCSS
 
 
 ## Wireframe
