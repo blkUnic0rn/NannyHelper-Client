@@ -4,9 +4,9 @@ This app was designed for child caregivers to share their experiences in order t
 
 ## Important Links
 
-Deployed Site:
+Deployed Site: https://kayla-sa-w.github.io/NannyHelper-Client/
 
-Deployed Heroku:
+Deployed Heroku: https://agile-basin-70115.herokuapp.com/
 
 Deployed API Repo: https://github.com/Kayla-SA-W/NannyHelper-Api
 
