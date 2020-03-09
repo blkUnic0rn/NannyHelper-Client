@@ -11,7 +11,7 @@ const Families = props => {
     axios(`${apiUrl}/families`)
       .then(res => setFamilies(res.data.families))
       .catch(console.error)
-  })
+  }, [])
 
   const familiesList = families.map(family => (
     <li key={family.id}>

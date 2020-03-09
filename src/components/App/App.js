@@ -56,10 +56,10 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
-          <Route path='/families' render={() => (
+          <Route exact path='/families' render={() => (
             <Families msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
-          <Route path='/families/:id' render={({ match }) => (
+          <Route exact path='/families/:id' render={({ match }) => (
             <Family msgAlert={this.msgAlert} setUser={this.setUser} match={match} />
           )} />
         </main>
