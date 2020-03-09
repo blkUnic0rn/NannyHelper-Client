@@ -8,6 +8,8 @@ import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
+import Families from '../Families/Families.js'
+import Family from '../Family/Family.js'
 
 class App extends Component {
   constructor () {
@@ -53,6 +55,12 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
+          )} />
+          <Route path='/families' render={() => (
+            <Families msgAlert={this.msgAlert} setUser={this.setUser} />
+          )} />
+          <Route path='/families/:id' render={({ match }) => (
+            <Family msgAlert={this.msgAlert} setUser={this.setUser} match={match} />
           )} />
         </main>
       </Fragment>
