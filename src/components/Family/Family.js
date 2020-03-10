@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
+import Ratings from '../Ratings/Ratings'
+
 import apiUrl from '../../apiConfig'
 
 const Family = props => {
   const [family, setFamily] = useState(null)
   const [ratings, setRatings] = useState(null)
+  const [showRatings, setShowRatings] = useState(false)
 
   useEffect(() => {
     axios(`${apiUrl}/families/${props.match.params.id}`)
@@ -14,23 +17,19 @@ const Family = props => {
       .catch(console.error)
   }, [])
 
-  const onShowRatings = () => {
+  useEffect(() => {
     axios(`${apiUrl}/ratings`)
       .then(res => setRatings(res.data.ratings))
-      .then(() => console.log(ratings))
       .catch(console.error)
+  }, [])
 
-    // const ratingsList = ratings.map(rating => (
-    //   <li key={rating.id}>
-    //     happiness = {rating.happiness}
-    //   </li>
-    // ))
-
-    return (
-      <ol>
-        <h1> hi </h1>
-      </ol>
-    )
+  const onShowRatings = () => {
+    console.log(ratings)
+    if (ratings) {
+      setShowRatings(true)
+    } else {
+      return <p> Loading...</p>
+    }
   }
 
   if (!family) {
@@ -40,6 +39,7 @@ const Family = props => {
   return (
     <div>
       <h4>{family.familyName}</h4>
+      {showRatings && <Ratings/>}
       <button onClick={onShowRatings}>Show Ratings</button>
       <Link to="/families">Back to all families</Link>
     </div>

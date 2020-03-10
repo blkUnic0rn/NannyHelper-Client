@@ -8,8 +8,9 @@ import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
-import Families from '../Families/Families.js'
-import Family from '../Family/Family.js'
+import Families from '../Families/Families'
+import Family from '../Family/Family'
+import FamilyCreate from '../FamilyCreate/FamilyCreate'
 
 class App extends Component {
   constructor () {
@@ -62,6 +63,7 @@ class App extends Component {
           <Route exact path='/families/:id' render={({ match }) => (
             <Family msgAlert={this.msgAlert} setUser={this.setUser} match={match} />
           )} />
+          <Route exact path='/create-family' component={FamilyCreate} />
         </main>
       </Fragment>
     )
