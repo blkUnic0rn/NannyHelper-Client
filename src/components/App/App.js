@@ -12,6 +12,7 @@ import Families from '../Families/Families'
 import Family from '../Family/Family'
 import FamilyCreate from '../FamilyCreate/FamilyCreate'
 import NewRating from '../NewRating/NewRating'
+import ViewUserRatings from '../UserRatings/ViewUserRatings'
 
 class App extends Component {
   constructor () {
@@ -67,6 +68,9 @@ class App extends Component {
           <AuthenticatedRoute exact path='/create-family' component={FamilyCreate} />
           <AuthenticatedRoute exact user={user} path='/families/:id/rate' render={({ match }) => (
             <NewRating msgAlert={this.msgAlert} user={user} match={match}/>
+          )} />
+          <AuthenticatedRoute exact user={user} path='/ratings' render={({ match }) => (
+            <ViewUserRatings msgAlert={this.msgAlert} user={user} match={match}/>
           )} />
         </main>
       </Fragment>
