@@ -41,6 +41,9 @@ const Family = props => {
       <h4>{family.familyName}</h4>
       {showRatings && <Ratings/>}
       <button onClick={onShowRatings}>Show Ratings</button>
+      <Link to={`/families/${props.match.params.id}/rate`}>
+        <button> New Rating </button>
+      </Link>
       <Link to="/families">Back to all families</Link>
     </div>
   )

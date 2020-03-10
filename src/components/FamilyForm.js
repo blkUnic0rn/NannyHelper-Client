@@ -14,7 +14,7 @@ const FamilyForm = ({ family, handleSubmit, handleChange, cancelPath }) => (
           <input
             placeholder="Doe"
             value={family.familyName}
-            name="family Name"
+            name="familyName"
             onChange={handleChange}
           />
         </Form.Group>
