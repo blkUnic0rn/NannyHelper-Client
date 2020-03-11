@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Form from 'react-bootstrap/Form'
+import { Link } from 'react-router-dom'
 
 const RatingForm = ({ rating, handleSubmit, handleChange, cancelPath }) => (
   <div className='row'>
@@ -202,9 +203,11 @@ const RatingForm = ({ rating, handleSubmit, handleChange, cancelPath }) => (
             onChange={handleChange}
           />
         </Form.Group>
-
         <button className='submit' type="submit">Submit</button>
       </Form>
+      <Link to={cancelPath}>
+        <button>Cancel</button>
+      </Link>
     </div>
   </div>
 )

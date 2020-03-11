@@ -1,45 +1,77 @@
-import React, { useState } from 'react'
-import { Redirect } from 'react-router-dom'
+import React, { Component } from 'react'
+import { Redirect, withRouter } from 'react-router-dom'
 import axios from 'axios'
 
 import FamilyForm from '../FamilyForm'
 import apiUrl from '../../apiConfig'
-import Layout from '../Layout'
+import messages from '../AutoDismissAlert/messages'
 
-const FamilyCreate = props => {
-  const [family, setFamily] = useState({ familyName: '', parentOneName: '', parentTwoName: '', numberOfKids: '', city: '', state: '' })
-  const [createdFamilyId, setCreatedFamilyId] = useState(null)
+class FamilyCreate extends Component {
+  constructor () {
+    super()
 
-  const handleChange = event => {
-    event.persist()
-    setFamily(family => ({ ...family, [event.target.name]: event.target.value }))
+    this.state = {
+      family: {
+        familyName: '',
+        parentOneName: '',
+        parentTwoName: '',
+        numberOfKids: '',
+        city: '',
+        state: ''
+      },
+      createdFamilyId: null
+    }
   }
 
-  const handleSubmit = event => {
-    event.preventDefault()
+  handleChange = event => {
+    const updatedField = { [event.target.name]: event.target.value }
 
+    const editedFamily = Object.assign(this.state.family, updatedField)
+
+    this.setState({ family: editedFamily })
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
     axios({
       url: `${apiUrl}/families`,
       method: 'POST',
-      data: { family }
+      headers: {
+        Authorization: `Bearer ${this.props.user.token}`
+      },
+      data: { family: this.state.family }
     })
-      .then(res => setCreatedFamilyId(res.data.family.id))
-      .catch(console.error)
+      .then(res => this.setState({ createdFamilyId: res.data.family.id }))
+      .then(() => this.props.msgAlert({
+        heading: 'Created Family Successfully',
+        message: messages.createFamilySuccess,
+        variant: 'success'
+      }))
+      .catch(error =>
+        this.props.msgAlert({
+          heading: 'Create Family Failed with error: ' + error.message,
+          message: messages.createFamilyFailure,
+          variant: 'danger'
+        })
+      )
   }
 
-  if (createdFamilyId) {
-    return <Redirect to={`/families/${createdFamilyId}`} />
-  }
+  render () {
+    const { handleChange, handleSubmit } = this
+    const { createdFamilyId, family } = this.state
 
-  return (
-    <Layout>
+    if (createdFamilyId) {
+      return <Redirect to={`/families/${createdFamilyId}`} />
+    }
+
+    return (
       <FamilyForm
         family={family}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
-        cancelPath="/" />
-    </Layout>
-  )
+        cancelPath="/families" />
+    )
+  }
 }
 
-export default FamilyCreate
+export default withRouter(FamilyCreate)

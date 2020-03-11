@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import apiUrl from '../../apiConfig'
 import RatingForm from '../RatingForm'
+import messages from '../AutoDismissAlert/messages'
 
 const EditRating = props => {
   const [rating, setRating] = useState({
@@ -34,6 +35,7 @@ const EditRating = props => {
   }
 
   const handleSubmit = event => {
+    const { msgAlert } = this.props
     event.preventDefault()
 
     axios({
@@ -42,7 +44,18 @@ const EditRating = props => {
       data: { rating }
     })
       .then(() => setUpdated(true))
-      .catch(console.error)
+      .then(() => msgAlert({
+        heading: 'Edit Rating Success',
+        message: messages.editRatingSuccess,
+        variant: 'success'
+      }))
+      .catch(error => {
+        msgAlert({
+          heading: 'Edit Rating Failed with error: ' + error.message,
+          message: messages.editRatingFailure,
+          variant: 'danger'
+        })
+      })
   }
 
   if (updated) {

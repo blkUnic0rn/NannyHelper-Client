@@ -25,7 +25,7 @@ class ViewUserRatings extends Component {
 
     return (
       <div>
-        <h4>Users Ratings</h4>
+        <h4>My Ratings</h4>
         <ul>
           {ratings.filter(rating => rating.user.id === user.id).map(rating => (
             <li className='user-rating-list' key={rating.id}>

@@ -67,7 +67,9 @@ class App extends Component {
           <Route exact path='/families/:id' user={user} render={({ match }) => (
             <Family msgAlert={this.msgAlert} user={user} match={match} />
           )} />
-          <AuthenticatedRoute exact path='/create-family' component={FamilyCreate} />
+          <AuthenticatedRoute exact path='/create-family' user={user} render={({ match }) => (
+            <FamilyCreate msgAlert={this.msgAlert} user={user} match={match}/>
+          )} />
           <AuthenticatedRoute exact user={user} path='/families/:id/rate' render={({ match }) => (
             <NewRating msgAlert={this.msgAlert} user={user} match={match}/>
           )} />

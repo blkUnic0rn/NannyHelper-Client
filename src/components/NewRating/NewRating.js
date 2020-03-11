@@ -2,14 +2,17 @@ import React, { Component } from 'react'
 
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+import messages from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
+import { Link, Redirect } from 'react-router-dom'
 
 class RatingForm extends Component {
   constructor () {
     super()
 
     this.state = {
+      redirect: false,
       happiness: 1,
       honesty: 1,
       reliability: 1,
@@ -31,9 +34,9 @@ class RatingForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
+    const { msgAlert } = this.props
 
     const { user } = this.props
-    console.log(user)
     axios({
       url: `${apiUrl}/ratings`,
       method: 'POST',
@@ -56,11 +59,30 @@ class RatingForm extends Component {
         }
       }
     })
+      .then(() => msgAlert({
+        heading: 'Created Rating Successfully',
+        message: messages.createRatingSuccess,
+        variant: 'success'
+      }))
+      .then(() => this.setState({ redirect: true }))
+      .catch(error => {
+        msgAlert({
+          heading: 'Create Rating Failed with error: ' + error.message,
+          message: messages.createRatingFailure,
+          variant: 'danger'
+        })
+      })
   }
 
   render () {
     const { happiness, honesty, reliability, consistency, respect, benefits,
-      kids, safetyAndComfort, pay, workAgain, repuation, url } = this.state
+      kids, safetyAndComfort, pay, workAgain, repuation, url, redirect } = this.state
+
+    if (redirect) {
+      return (
+        <Redirect to='/families' />
+      )
+    }
     return (
       <div className='row'>
         <div className="col-sm-10 cold-md-8 mx-auto mt-5">
@@ -264,6 +286,9 @@ class RatingForm extends Component {
 
             <button className='submit' type="submit">Submit</button>
           </Form>
+          <Link to="/ratings" >
+            <button>Cancel</button>
+          </Link>
         </div>
       </div>
     )

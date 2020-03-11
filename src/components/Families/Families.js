@@ -25,6 +25,11 @@ const Families = props => {
       <ul>
         {familiesList}
       </ul>
+      <div className='button-area'>
+        <Link to="/create-family">
+          <button> Create a New Family </button>
+        </Link>
+      </div>
     </div>
   )
 }
