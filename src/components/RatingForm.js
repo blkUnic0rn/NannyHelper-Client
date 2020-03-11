@@ -1,7 +1,6 @@
 import React from 'react'
 
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 
 const RatingForm = ({ rating, handleSubmit, handleChange, cancelPath }) => (
   <div className='row'>
@@ -14,6 +13,7 @@ const RatingForm = ({ rating, handleSubmit, handleChange, cancelPath }) => (
           <Form.Control as="select"
             value={rating.happiness}
             name='happiness'
+            required
             onChange={handleChange}
           >
             <option>1</option>
@@ -30,6 +30,7 @@ const RatingForm = ({ rating, handleSubmit, handleChange, cancelPath }) => (
           <Form.Control as="select"
             value={rating.honesty}
             name='honesty'
+            required
             onChange={handleChange}
           >
             <option>1</option>
@@ -46,6 +47,7 @@ const RatingForm = ({ rating, handleSubmit, handleChange, cancelPath }) => (
           <Form.Control as="select"
             value={rating.reliability}
             name='reliability'
+            required
             onChange={handleChange}
           >
             <option>1</option>
@@ -62,6 +64,7 @@ const RatingForm = ({ rating, handleSubmit, handleChange, cancelPath }) => (
           <Form.Control as="select"
             value={rating.consistency}
             name='consistency'
+            required
             onChange={handleChange}
           >
             <option>1</option>
@@ -78,6 +81,7 @@ const RatingForm = ({ rating, handleSubmit, handleChange, cancelPath }) => (
           <Form.Control as="select"
             value={rating.respect}
             name='respect'
+            required
             onChange={handleChange}
           >
             <option>1</option>
@@ -94,6 +98,7 @@ const RatingForm = ({ rating, handleSubmit, handleChange, cancelPath }) => (
           <Form.Control as="select"
             value={rating.benefits}
             name='benefits'
+            required
             onChange={handleChange}
           >
             <option>1</option>
@@ -110,6 +115,7 @@ const RatingForm = ({ rating, handleSubmit, handleChange, cancelPath }) => (
           <Form.Control as="select"
             value={rating.kids}
             name='kids'
+            required
             onChange={handleChange}
           >
             <option>1</option>
@@ -126,6 +132,7 @@ const RatingForm = ({ rating, handleSubmit, handleChange, cancelPath }) => (
           <Form.Control as="select"
             value={rating.safetyAndComfort}
             name='safetyAndComfort'
+            required
             onChange={handleChange}
           >
             <option>1</option>
@@ -142,6 +149,7 @@ const RatingForm = ({ rating, handleSubmit, handleChange, cancelPath }) => (
           <Form.Control as="select"
             value={rating.pay}
             name='pay'
+            required
             onChange={handleChange}
           >
             <option>1</option>
@@ -158,6 +166,7 @@ const RatingForm = ({ rating, handleSubmit, handleChange, cancelPath }) => (
             placeholder="yes or no"
             value={rating.workAgain}
             name="workAgain"
+            required
             onChange={handleChange}
           >
             <option>yes</option>
@@ -171,6 +180,7 @@ const RatingForm = ({ rating, handleSubmit, handleChange, cancelPath }) => (
           <Form.Control as="select"
             value={rating.repuation}
             name='repuation'
+            required
             placeholder=''
             onChange={handleChange}
           >
@@ -193,7 +203,7 @@ const RatingForm = ({ rating, handleSubmit, handleChange, cancelPath }) => (
           />
         </Form.Group>
 
-        <Button varitent="primary" type="submit">Submit</Button>
+        <button className='submit' type="submit">Submit</button>
       </Form>
     </div>
   </div>

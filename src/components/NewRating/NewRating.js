@@ -4,7 +4,6 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 
 class RatingForm extends Component {
   constructor () {
@@ -65,7 +64,7 @@ class RatingForm extends Component {
     return (
       <div className='row'>
         <div className="col-sm-10 cold-md-8 mx-auto mt-5">
-          <h3> Create a New Rating </h3>
+          <h3> Create A New Rating </h3>
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId='happiness'>
               <Form.Label>Happiness </Form.Label>
@@ -73,6 +72,7 @@ class RatingForm extends Component {
               <Form.Control as="select"
                 value={happiness}
                 name='happiness'
+                required
                 onChange={this.handleChange}
               >
                 <option>1</option>
@@ -85,10 +85,11 @@ class RatingForm extends Component {
 
             <Form.Group controlId='honesty'>
               <Form.Label>Honesty </Form.Label>
-              <p> On a Scale of 1 - 5, how honest were they you? Could you trust them? </p> <br />
+              <p> On a Scale of 1 - 5, how honest were they you? Could you trust them? </p>
               <Form.Control as="select"
                 value={honesty}
                 name='honesty'
+                required
                 onChange={this.handleChange}
               >
                 <option>1</option>
@@ -105,6 +106,7 @@ class RatingForm extends Component {
               <Form.Control as="select"
                 value={reliability}
                 name='reliability'
+                required
                 onChange={this.handleChange}
               >
                 <option>1</option>
@@ -117,10 +119,11 @@ class RatingForm extends Component {
 
             <Form.Group controlId='consistency'>
               <Form.Label>Consistency </Form.Label>
-              <p> On a Scale of 1 - 5, Were they consistent? Did they cancel on you a lot? </p> <br />
+              <p> On a Scale of 1 - 5, Were they consistent? Did they cancel on you a lot? </p>
               <Form.Control as="select"
                 value={consistency}
                 name='consistency'
+                required
                 onChange={this.handleChange}
               >
                 <option>1</option>
@@ -133,10 +136,11 @@ class RatingForm extends Component {
 
             <Form.Group controlId='respect'>
               <Form.Label>Respect </Form.Label>
-              <p> On a Scale of 1 - 5, did they respect you? Did they go against you in front of the kids? </p> <br />
+              <p> On a Scale of 1 - 5, did they respect you? Did they go against you in front of the kids? </p>
               <Form.Control as="select"
                 value={respect}
                 name='respect'
+                required
                 onChange={this.handleChange}
               >
                 <option>1</option>
@@ -149,10 +153,11 @@ class RatingForm extends Component {
 
             <Form.Group controlId='benefits'>
               <Form.Label>Benefits </Form.Label>
-              <p> On a Scale of 1 - 5, did you have resonable benefits? Sick time, vacation time, holidays? </p> <br />
+              <p> On a Scale of 1 - 5, did you have resonable benefits? Sick time, vacation time, holidays? </p>
               <Form.Control as="select"
                 value={benefits}
                 name='benefits'
+                required
                 onChange={this.handleChange}
               >
                 <option>1</option>
@@ -169,6 +174,7 @@ class RatingForm extends Component {
               <Form.Control as="select"
                 value={kids}
                 name='kids'
+                required
                 onChange={this.handleChange}
               >
                 <option>1</option>
@@ -181,10 +187,11 @@ class RatingForm extends Component {
 
             <Form.Group controlId='safetyAndComfort'>
               <Form.Label>Safety and Comfort </Form.Label>
-              <p> On a Scale of 1 - 5, did you feel safe working for them? Were yuo over worked? </p> <br />
+              <p> On a Scale of 1 - 5, did you feel safe working for them? Were yuo over worked? </p>
               <Form.Control as="select"
                 value={safetyAndComfort}
                 name='safetyAndComfort'
+                required
                 onChange={this.handleChange}
               >
                 <option>1</option>
@@ -197,10 +204,11 @@ class RatingForm extends Component {
 
             <Form.Group controlId='pay'>
               <Form.Label>Pay </Form.Label>
-              <p> On a Scale of 1 - 5, were you payed on time (if at all)? were you payed for holidays/vactions? were you payed according to your qualifications and experience </p> <br />
+              <p> On a Scale of 1 - 5, were you payed on time (if at all)? were you payed for holidays/vactions? were you payed according to your qualifications and experience </p>
               <Form.Control as="select"
                 value={pay}
                 name='pay'
+                required
                 onChange={this.handleChange}
               >
                 <option>1</option>
@@ -217,6 +225,7 @@ class RatingForm extends Component {
                 placeholder="yes or no"
                 value={workAgain}
                 name="workAgain"
+                required
                 onChange={this.handleChange}
               >
                 <option>yes</option>
@@ -226,10 +235,11 @@ class RatingForm extends Component {
 
             <Form.Group controlId='reputation'>
               <Form.Label>Reputation </Form.Label>
-              <p> On a Scale of 1 - 5, were they a good family? did they have a bad/good repuation in the neighborhood? </p> <br />
+              <p> On a Scale of 1 - 5, were they a good family? did they have a bad/good repuation in the neighborhood? </p>
               <Form.Control as="select"
                 value={repuation}
                 name='repuation'
+                required
                 placeholder=''
                 onChange={this.handleChange}
               >
@@ -252,7 +262,7 @@ class RatingForm extends Component {
               />
             </Form.Group>
 
-            <Button varitent="primary" type="submit">Submit</Button>
+            <button className='submit' type="submit">Submit</button>
           </Form>
         </div>
       </div>

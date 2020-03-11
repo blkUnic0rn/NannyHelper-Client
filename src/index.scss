@@ -1,1 +1,112 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Athiti&display=swap');
+
+a {
+  color: #fafaff;
+  text-decoration: none;
+  text-transform: capitalize;
+
+  :hover {
+    color: #c2b4d9;
+  }
+}
+
+body {
+  color: #c2b4d9;
+}
+
+button {
+  background: #c2b4d9;
+  border-radius: 8px;
+  color: #fafaff;
+  font-size: 20px;
+
+  :hover {
+    background-color: #fafaff;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    color: #c2b4d9;
+  }
+}
+
+.button-area {
+  align-items: space-between;
+  display: flex;
+  justify-content: center;
+}
+
+.family-button-center {
+  display: flex;
+  justify-content: center;
+}
+
+.form-label {
+  font-family: 'Athiti', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+h4,
+h5,
+h3 {
+  align-items: center;
+  display: flex;
+  font-family: 'Sacramento', cursive;
+  justify-content: center;
+  text-transform: capitalize;
+}
+
+h4 {
+  font-size: 60px;
+}
+
+h5,
+h3 {
+  font-size: 40px;
+}
+
+li {
+  background: #94bbe9;
+  border: 2px solid #fafaff;
+  color: #fafaff;
+  text-transform: capitalize;
+}
+
+li:nth-child(odd) {
+  background: #eeaeca;
+}
+
+Nav {
+  background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+  color: #fafaff;
+  font-family: 'Sacramento', cursive;
+  margin-bottom: 30px;
+}
+
+.navbar-brand {
+  font-size: 35px;
+}
+
+.nav-link,
+.navbar-text {
+  font-size: 28px;
+}
+
+
+.single-rating {
+  border: 2px dotted #c2b4d9;
+  color: #c2b4d9;
+}
+
+p {
+  font-family: 'Athiti', sans-serif;
+}
+
+ul {
+  list-style-type: none;
+ }
+
+.user-rating-list {
+  display: flex;
+  justify-content: space-around;
+ }

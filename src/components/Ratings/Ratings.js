@@ -14,7 +14,7 @@ const Ratings = ({ props, name }) => {
 
   return (
     <div>
-      <h4>Ratings</h4>
+      <h5>Ratings</h5>
       <ul>
         {ratings.filter(rating => rating.family.familyName === name).map(rating => (
           <li key={rating.id}>

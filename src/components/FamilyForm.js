@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 
 const FamilyForm = ({ family, handleSubmit, handleChange, cancelPath }) => (
   <div className='row'>
@@ -15,6 +14,7 @@ const FamilyForm = ({ family, handleSubmit, handleChange, cancelPath }) => (
             placeholder="Doe"
             value={family.familyName}
             name="familyName"
+            required
             onChange={handleChange}
           />
         </Form.Group>
@@ -25,6 +25,7 @@ const FamilyForm = ({ family, handleSubmit, handleChange, cancelPath }) => (
             placeholder="John"
             value={family.parentOneName}
             name="parentOneName"
+            required
             onChange={handleChange}
           />
         </Form.Group>
@@ -44,6 +45,7 @@ const FamilyForm = ({ family, handleSubmit, handleChange, cancelPath }) => (
             placeholder="3"
             value={family.numberOfKids}
             name="numberOfKids"
+            required
             onChange={handleChange}
           />
         </Form.Group>
@@ -54,6 +56,7 @@ const FamilyForm = ({ family, handleSubmit, handleChange, cancelPath }) => (
             placeholder="Boston"
             value={family.city}
             name="city"
+            required
             onChange={handleChange}
           />
         </Form.Group>
@@ -64,13 +67,14 @@ const FamilyForm = ({ family, handleSubmit, handleChange, cancelPath }) => (
             placeholder="Massachusetts"
             value={family.state}
             name="state"
+            required
             onChange={handleChange}
           />
         </Form.Group>
 
-        <Button varitent="primary" type="submit">Submit</Button>
+        <button className='submit' type="submit">Submit</button>
         <Link to={cancelPath}>
-          <Button>Cancel</Button>
+          <button>Cancel</button>
         </Link>
       </Form>
     </div>

@@ -23,14 +23,12 @@ class ViewUserRatings extends Component {
     const { user } = this.props
     const { ratings } = this.state
 
-    console.log(ratings)
-
     return (
       <div>
         <h4>Users Ratings</h4>
         <ul>
           {ratings.filter(rating => rating.user.id === user.id).map(rating => (
-            <li key={rating.id}>
+            <li className='user-rating-list' key={rating.id}>
               {rating.family.familyName}
               <Link to={`/ratings/${rating.id}`}>View Rating</Link>
             </li>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import Spinner from 'react-bootstrap/Spinner'
 
 import Ratings from '../Ratings/Ratings'
 
@@ -27,24 +28,37 @@ const Family = props => {
     if (ratings) {
       setShowRatings(true)
     } else {
-      return <p> Loading...</p>
+      return (
+        <Spinner animation="border" variant="success" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      )
     }
   }
 
   if (!family) {
-    return <p>Loading...</p>
+    return (
+      <Spinner animation="border" variant="success" role="status">
+        <span className="sr-only">Loading...</span>
+      </Spinner>
+    )
   }
   const name = family.familyName
 
   return (
     <div>
-      <h4>{family.familyName}</h4>
+      <h4>{family.familyName}, {family.numberOfKids} kids</h4>
+      <h5>{family.parentOneName} {family.familyName}, {family.city}, {family.state}</h5><br />
       {showRatings && <Ratings name={name} />}
-      <button onClick={onShowRatings}>Show Ratings</button>
-      <Link to={`/families/${props.match.params.id}/rate`}>
-        <button> New Rating </button>
-      </Link>
-      <Link to="/families">Back to all families</Link>
+      <div className='family-button-center'>
+        <button onClick={onShowRatings}>Show Ratings</button>
+        <Link to={`/families/${props.match.params.id}/rate`}>
+          <button> New Rating </button>
+        </Link>
+        <Link to="/families">
+          <button> Back to Families </button>
+        </Link>
+      </div>
     </div>
   )
 }
