@@ -34,11 +34,12 @@ const Family = props => {
   if (!family) {
     return <p>Loading...</p>
   }
+  const name = family.familyName
 
   return (
     <div>
       <h4>{family.familyName}</h4>
-      {showRatings && <Ratings/>}
+      {showRatings && <Ratings name={name} />}
       <button onClick={onShowRatings}>Show Ratings</button>
       <Link to={`/families/${props.match.params.id}/rate`}>
         <button> New Rating </button>
