@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 import apiUrl from '../../apiConfig'
@@ -22,13 +23,16 @@ class ViewUserRatings extends Component {
     const { user } = this.props
     const { ratings } = this.state
 
+    console.log(ratings)
+
     return (
       <div>
         <h4>Users Ratings</h4>
         <ul>
           {ratings.filter(rating => rating.user.id === user.id).map(rating => (
             <li key={rating.id}>
-              {rating.happiness}
+              {rating.family.familyName}
+              <Link to={`/ratings/${rating.id}`}>View Rating</Link>
             </li>
           ))}
         </ul>

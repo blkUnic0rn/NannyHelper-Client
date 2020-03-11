@@ -24,7 +24,6 @@ const Family = props => {
   }, [])
 
   const onShowRatings = () => {
-    console.log(ratings)
     if (ratings) {
       setShowRatings(true)
     } else {
