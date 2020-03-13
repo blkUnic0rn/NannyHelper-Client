@@ -15,6 +15,7 @@ import NewRating from '../NewRating/NewRating'
 import ViewUserRatings from '../UserRatings/ViewUserRatings'
 import ViewRating from '../ViewRating/ViewRating'
 import EditRating from '../EditRating/EditRating'
+import AboutMe from '../AboutMe/AboutMe'
 
 class App extends Component {
   constructor () {
@@ -55,6 +56,7 @@ class App extends Component {
           <Route path='/sign-in' render={() => (
             <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
+          <Route path='/about' render={() => (<AboutMe />)}/>
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
           )} />

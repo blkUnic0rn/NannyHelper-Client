@@ -49,7 +49,8 @@ button {
 
 h4,
 h5,
-h3 {
+h3,
+h1 {
   align-items: center;
   display: flex;
   font-family: 'Sacramento', cursive;
@@ -57,7 +58,8 @@ h3 {
   text-transform: capitalize;
 }
 
-h4 {
+h4,
+h1 {
   font-size: 60px;
 }
 
@@ -101,6 +103,11 @@ Nav {
 
 p {
   font-family: 'Athiti', sans-serif;
+}
+
+.profile {
+  color: #c2b4d9;
+  text-transform: lowercase;
 }
 
 ul {
