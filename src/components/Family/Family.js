@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Spinner from 'react-bootstrap/Spinner'
-import StatsChart from '../StatsChart/StatsChart'
+// import StatsChart from '../StatsChart/StatsChart'
 
 import Ratings from '../Ratings/Ratings'
 
@@ -22,7 +22,6 @@ const Family = props => {
   const [safetyArray, setSafety] = useState([])
   const [payArray, setPay] = useState([])
   const [reputationArray, setReputation] = useState([])
-  const [showChart, setShowChart] = useState(false)
 
   useEffect(() => {
     axios(`${apiUrl}/families/${props.match.params.id}`)
@@ -34,7 +33,6 @@ const Family = props => {
     axios(`${apiUrl}/ratings`)
       .then(res => setRatings(res.data.ratings))
       .then(() => splitRatings)
-      .then(setShowChart(true))
       .catch(console.error)
   }, [])
 
@@ -122,24 +120,10 @@ const Family = props => {
     console.log(happinessAverage)
   }
 
-  const data = [
-    { 'id': 'happiness', 'label': 'happiness', 'value': happinessAverage, 'color': 'hsl(39, 70%, 50%)' },
-    { 'id': 'honesty', 'label': 'honesty', 'value': honestyAverage, 'color': 'hsl(287, 70%, 50%)' },
-    { 'id': 'reliability', 'label': 'reliability', 'value': reliabilityAverage, 'color': 'hsl(247, 70%, 50%)' },
-    { 'id': 'consistency', 'label': 'consistency', 'value': consistencyAverage, 'color': 'hsl(84, 70%, 50%)' },
-    { 'id': 'respect', 'label': 'respect', 'value': respectAverage, 'color': 'hsl(307, 70%, 50%)' },
-    { 'id': 'benefits', 'label': 'benefits', 'value': benefitsAverage, 'color': 'hsl(39, 70%, 50%)' },
-    { 'id': 'kids', 'label': 'kids', 'value': kidsAverage, 'color': 'hsl(287, 70%, 50%)' },
-    { 'id': 'safety', 'label': 'safety', 'value': safetyAndComfortAverage, 'color': 'hsl(247, 70%, 50%)' },
-    { 'id': 'pay', 'label': 'pay', 'value': payAverage, 'color': 'hsl(84, 70%, 50%)' },
-    { 'id': 'reputation', 'label': 'reputation', 'value': reputationAverage, 'color': 'hsl(307, 70%, 50%)' }
-  ]
-
   return (
     <div>
       <h4>{family.familyName}, {family.numberOfKids} kids</h4>
       <h5>{family.parentOneName} {family.familyName}, {family.city}, {family.state}</h5><br />
-      {showChart && <StatsChart data= { data } />}
       {showRatings && <Ratings name={name} />}
       <div className='family-button-center'>
         <button onClick={onShowRatings}>Show Ratings</button>

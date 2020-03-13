@@ -4,9 +4,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@nivo/bar": "^0.61.1",
-    "@nivo/pie": "^0.61.1",
-    "@nivo/sankey": "^0.61.2",
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
