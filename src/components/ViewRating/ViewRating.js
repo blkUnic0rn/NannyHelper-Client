@@ -18,6 +18,9 @@ const Rating = props => {
   const destroy = () => {
     axios({
       url: `${apiUrl}/ratings/${props.match.params.id}`,
+      headers: {
+        Authorization: `Bearer ${props.user.token}`
+      },
       method: 'DELETE'
     })
       .then(() => setDeleted(true))
