@@ -40,6 +40,9 @@ class RatingForm extends Component {
     axios({
       url: `${apiUrl}/ratings`,
       method: 'POST',
+      headers: {
+        Authorization: `Bearer ${this.props.user.token}`
+      },
       data: {
         'rating': {
           'happiness': this.state.happiness,

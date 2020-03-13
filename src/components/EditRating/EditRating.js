@@ -41,6 +41,9 @@ const EditRating = props => {
     axios({
       url: `${apiUrl}/ratings/${props.match.params.id}`,
       method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${this.props.user.token}`
+      },
       data: { rating }
     })
       .then(() => setUpdated(true))

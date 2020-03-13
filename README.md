@@ -48,4 +48,4 @@ I started wanting to find a way to help some of my friends in the childcare circ
 
 ## Wireframe
 
-![Wireframe image 1](https://imgur.com/bPtD8dA)
+![Wireframe image 1](/public/wireframe1.png)
