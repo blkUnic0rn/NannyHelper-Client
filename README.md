@@ -34,6 +34,12 @@ I started wanting to find a way to help some of my friends in the childcare circ
 
 * As a signed in user, I would like to see all of my reviews
 
+## Unsolved Problems
+
+I would like a user to successfully look up a family by their last name or city.
+
+I would like a user to see the statistics of any given family when ratings are displayed.
+
 
 ## Technologies Used
 
@@ -46,6 +52,15 @@ I started wanting to find a way to help some of my friends in the childcare circ
 * SCSS
 
 
-## Wireframe
+## Images
 
+![NannyHelper](/public/testImg.png)
+
+### Wireframe
 ![Wireframe image 1](/public/wireframe1.png)
+
+## ERD
+![ERD](/public/ERD.png)
+
+## Routes Catalog
+![Routes Catalog](/public/Routes.png)
