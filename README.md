@@ -48,7 +48,6 @@ I would like a user to see the statistics of any given family when ratings are d
 * React Bootstrap
 * Axios
 * JSX
-* Bootstrap
 * SCSS
 
 
