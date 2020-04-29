@@ -8,6 +8,35 @@ import Ratings from '../Ratings/Ratings'
 
 import apiUrl from '../../apiConfig'
 
+const colors = [
+  '#ecaecb',
+  '#cfb3d5',
+  '#a8b8e2',
+  '#e4afce',
+  '#c1b5d9',
+  '#9eb9e5',
+  '#ddb0d0',
+  '#b6b6dd',
+  '#95bae8'
+]
+
+const purple = '#c2b4d9'
+// Typography
+const cursive = 'cursive'
+const letterSpacing = 'normal'
+const fontSize = 14
+
+const style = {
+  labels: {
+    fontFamily: cursive,
+    fontSize,
+    letterSpacing,
+    padding: 10,
+    fill: purple,
+    stroke: 'transparent'
+  }
+}
+
 const Family = props => {
   const [family, setFamily] = useState(null)
   const [ratings, setRatings] = useState(null)
@@ -108,17 +137,21 @@ const Family = props => {
       <h4>{family.familyName}, {family.numberOfKids} kids</h4>
       <h5>{family.parentOneName} {family.familyName}, {family.city}, {family.state}</h5><br />
       {showChart && <VictoryPie
-        colorScale={'blue'}
+        colorScale={colors}
+        width= {450}
+        height= {300}
+        padding= {50}
+        style= {style}
         data={[
-          { x: 'Happiness', y: happinessA },
-          { x: 'Honesty', y: honestyArray },
-          { x: 'Reliability', y: reliabilityArray },
-          { x: 'Consistency', y: consistencyArray },
-          { x: 'Respect', y: respectArray },
-          { x: 'Benefits', y: benefitsArray },
-          { x: 'Kids', y: kidsArray },
-          { x: 'Saftey and Comfort', y: safetyArray },
-          { x: 'Pay', y: payArray }
+          { x: 'Happiness', y: happinessA, label: 'Happiness' },
+          { x: 'Honesty', y: honestyArray, label: 'Honesty' },
+          { x: 'Reliability', y: reliabilityArray, label: 'Reliability' },
+          { x: 'Consistency', y: consistencyArray, label: 'Consistency' },
+          { x: 'Respect', y: respectArray, label: 'Respect' },
+          { x: 'Benefits', y: benefitsArray, label: 'Benefits' },
+          { x: 'Kids', y: kidsArray, label: 'Kids' },
+          { x: 'Saftey', y: safetyArray, label: 'Saftey' },
+          { x: 'Pay', y: payArray, label: 'Pay' }
         ]}
       />}
       {showRatings && <Ratings name={name} />}
