@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Spinner from 'react-bootstrap/Spinner'
-// import StatsChart from '../StatsChart/StatsChart'
+import { VictoryPie } from 'victory'
 
 import Ratings from '../Ratings/Ratings'
 
@@ -12,16 +12,16 @@ const Family = props => {
   const [family, setFamily] = useState(null)
   const [ratings, setRatings] = useState(null)
   const [showRatings, setShowRatings] = useState(false)
-  const [happinessArray, setHappiness] = useState([])
-  const [honestyArray, setHonesty] = useState([])
-  const [reliabilityArray, setReliability] = useState([])
-  const [consistencyArray, setConsistency] = useState([])
-  const [respectArray, setRespect] = useState([])
-  const [benefitsArray, setBenefits] = useState([])
-  const [kidsArray, setKids] = useState([])
-  const [safetyArray, setSafety] = useState([])
-  const [payArray, setPay] = useState([])
-  const [reputationArray, setReputation] = useState([])
+  const [showChart, setShowChart] = useState(false)
+  const [happinessA, setHappiness] = useState(0)
+  const [honestyArray, setHonesty] = useState(0)
+  const [reliabilityArray, setReliability] = useState(0)
+  const [consistencyArray, setConsistency] = useState(0)
+  const [respectArray, setRespect] = useState(0)
+  const [benefitsArray, setBenefits] = useState(0)
+  const [kidsArray, setKids] = useState(0)
+  const [safetyArray, setSafety] = useState(0)
+  const [payArray, setPay] = useState(0)
 
   useEffect(() => {
     axios(`${apiUrl}/families/${props.match.params.id}`)
@@ -32,13 +32,13 @@ const Family = props => {
   useEffect(() => {
     axios(`${apiUrl}/ratings`)
       .then(res => setRatings(res.data.ratings))
-      .then(() => splitRatings)
       .catch(console.error)
   }, [])
 
   const onShowRatings = () => {
     if (ratings) {
       setShowRatings(true)
+      splitRatings()
     } else {
       return (
         <Spinner animation="border" variant="success" role="status">
@@ -58,6 +58,8 @@ const Family = props => {
   const name = family.familyName
 
   const splitRatings = () => {
+    const currRatings = ratings.filter(rating => rating.family.familyName === name)
+    console.log(currRatings)
     const happiness = []
     const honesty = []
     const reliability = []
@@ -67,10 +69,8 @@ const Family = props => {
     const kids = []
     const safetyAndComfort = []
     const pay = []
-    const reputation = []
-
-    ratings.forEach(rating => (
-      happiness.push(parseInt(rating.happiness)) &&
+    currRatings.forEach(rating => ( // for each rating in ratings array
+      happiness.push(parseInt(rating.happiness)) && // push the happiness Int to the happiness array
       honesty.push(parseInt(rating.honesty)) &&
       reliability.push(parseInt(rating.reliability)) &&
       consistency.push(parseInt(rating.consistency)) &&
@@ -78,52 +78,49 @@ const Family = props => {
       benefits.push(parseInt(rating.benefits)) &&
       kids.push(parseInt(rating.kids)) &&
       safetyAndComfort.push(parseInt(rating.safetyAndComfort)) &&
-      pay.push(parseInt(rating.pay)) &&
-      reputation.push(parseInt(rating.reputation))
+      pay.push(parseInt(rating.pay))
     ))
 
-    setHappiness(happiness)
-    setHonesty(honesty)
-    setReliability(reliability)
-    setConsistency(consistency)
-    setRespect(respect)
-    setBenefits(benefits)
-    setKids(kids)
-    setSafety(safetyAndComfort)
-    setPay(pay)
-    setReputation(reputation)
-    checkAverages()
-  }
+    const happySum = (happiness.reduce((z, x) => z + x, 0)) / happiness.length // find the average of the happiness array
+    const honestySum = (honesty.reduce((z, x) => z + x, 0)) / honesty.length
+    const reliabilitySum = (reliability.reduce((z, x) => z + x, 0)) / reliability.length
+    const consistencySum = (consistency.reduce((z, x) => z + x, 0)) / consistency.length
+    const respectSum = (respect.reduce((z, x) => z + x, 0)) / respect.length
+    const benefitsSum = (benefits.reduce((z, x) => z + x, 0)) / benefits.length
+    const kidsSum = (kids.reduce((z, x) => z + x, 0)) / kids.length
+    const safetySum = (safetyAndComfort.reduce((z, x) => z + x, 0)) / safetyAndComfort.length
+    const paySum = (pay.reduce((z, x) => z + x, 0)) / pay.length
 
-  let happinessAverage = 0
-  let honestyAverage = 0
-  let reliabilityAverage = 0
-  let consistencyAverage = 0
-  let respectAverage = 0
-  let benefitsAverage = 0
-  let kidsAverage = 0
-  let safetyAndComfortAverage = 0
-  let payAverage = 0
-  let reputationAverage = 0
-
-  const checkAverages = () => {
-    happinessArray.forEach(num => (happinessAverage += num))
-    honestyArray.forEach(num => (honestyAverage += num))
-    reliabilityArray.forEach(num => (reliabilityAverage += num))
-    consistencyArray.forEach(num => (consistencyAverage += num))
-    respectArray.forEach(num => (respectAverage += num))
-    benefitsArray.forEach(num => (benefitsAverage += num))
-    kidsArray.forEach(num => (kidsAverage += num))
-    safetyArray.forEach(num => (safetyAndComfortAverage += num))
-    payArray.forEach(num => (payAverage += num))
-    reputationArray.forEach(num => (reputationAverage += num))
-    console.log(happinessAverage)
+    setHappiness(happySum)
+    setHonesty(honestySum)
+    setReliability(reliabilitySum)
+    setConsistency(consistencySum)
+    setRespect(respectSum)
+    setBenefits(benefitsSum)
+    setKids(kidsSum)
+    setSafety(safetySum)
+    setPay(paySum)
+    setShowChart(true)
   }
 
   return (
     <div>
       <h4>{family.familyName}, {family.numberOfKids} kids</h4>
       <h5>{family.parentOneName} {family.familyName}, {family.city}, {family.state}</h5><br />
+      {showChart && <VictoryPie
+        colorScale={'blue'}
+        data={[
+          { x: 'Happiness', y: happinessA },
+          { x: 'Honesty', y: honestyArray },
+          { x: 'Reliability', y: reliabilityArray },
+          { x: 'Consistency', y: consistencyArray },
+          { x: 'Respect', y: respectArray },
+          { x: 'Benefits', y: benefitsArray },
+          { x: 'Kids', y: kidsArray },
+          { x: 'Saftey and Comfort', y: safetyArray },
+          { x: 'Pay', y: payArray }
+        ]}
+      />}
       {showRatings && <Ratings name={name} />}
       <div className='family-button-center'>
         <button onClick={onShowRatings}>Show Ratings</button>
